@@ -15,7 +15,7 @@
     },
     "svr": {
         "bind": [
-            "tcp@0.0.0.0:7000"
+            "stream@/tmp/accessws.sock"
         ],
         "max_pkg_size": 102400,
         "protocol": "chat"

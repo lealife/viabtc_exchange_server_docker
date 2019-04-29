@@ -44,7 +44,7 @@ RUN wget https://codeload.github.com/curl/curl/tar.gz/curl-7_57_0 -O /src/curl-7
 ADD build.sh /src/build.sh
 
 # 编译viabtc
-RUN wget https://codeload.github.com/viabtc/viabtc_exchange_server/tar.gz/master -O /src/viabtc.tar.gz &&\
+RUN wget https://codeload.github.com/lealife/viabtc_exchange_server/tar.gz/master -O /src/viabtc.tar.gz &&\
  	tar xzvf /src/viabtc.tar.gz  &&\
  	rm -rf /src/viabtc.tar.gz &&\
  	mv viabtc_exchange_server-* viabtc &&\
@@ -63,6 +63,9 @@ CMD /bin/bash
 # FROM ubuntu:xenial
 
 COPY /btc/ /btc/
+COPY /btc/accessws /btc/
+RUN ls /btc
+RUN ls /btc/accessws
 
 RUN mkdir -p /var/log/trade &&\
 	mv /src/viabtc/matchengine/matchengine.exe  /btc/matchengine/ &&\
@@ -86,6 +89,8 @@ EXPOSE 7424
 EXPOSE 4444
 # accesshttp
 EXPOSE 8080
+# accessws
+EXPOSE 7000
 
 # monitor
 EXPOSE 8081
