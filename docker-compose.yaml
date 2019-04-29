@@ -58,6 +58,8 @@ services:
     build: ./db/
     ports:
       - "13306:3306"
+    volumes:
+      - /tmp/mysql_docker:/var/lib/mysql
 
   zookeeper:
     container_name: btc-zookeeper

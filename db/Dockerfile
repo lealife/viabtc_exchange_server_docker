@@ -2,6 +2,8 @@ FROM mysql:5.7
 
 MAINTAINER guo yukun
 
+# VOLUME ["/var/lib/mysql"]
+
 ENV MYSQL_USER=mysql\
 MYSQL_PASSWORD=mysql \
 MYSQL_ROOT_PASSWORD=root
