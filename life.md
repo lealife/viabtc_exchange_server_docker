@@ -37,6 +37,8 @@ docker build -t viabtc_exchange_server_docker_mysql .
 
 curl  http://127.0.0.1:18080/ -d '{"method": "market.list", "params": [], "id": 1516681174}'
 
+----------------------------------
+
 # 支持websocket
 accessws/config.json
 ```
@@ -64,4 +66,19 @@ docker-compose up
 
 var ws = new WebSocket('ws://c.com')
 ws.send('{"id":1,"method":"server.ping","params":[]}')
+
+# http 跨域
+
+通过nginx代理c.com -> localhost:18080, 支持跨域
+
+
+# 进入kafka容器的命令行
+
+docker exec -ti btc-kafka /bin/bash
+进入kafka所在目录
+cd opt/kafka_2.12-1.1.0/
+
+// 所有topics
+bin/kafka-topics.sh --list --zookeeper zookeeper:2181
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic deals --from-beginning
 
